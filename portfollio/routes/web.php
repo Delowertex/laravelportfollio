@@ -1,6 +1,12 @@
 <?php
 
 use Illuminate\Support\Facades\Route;
+use App\Http\Controllers\HomeController;
+use App\Http\Controllers\CourseController;
+use App\Http\Controllers\ProjectController;
+use App\Http\Controllers\TramsController;
+use App\Http\Controllers\PolicyController;
+use App\Http\Controllers\ContactController;
 
 /*
 |--------------------------------------------------------------------------
@@ -13,6 +19,12 @@ use Illuminate\Support\Facades\Route;
 |
 */
 
-Route::get('/', function () {
-    return view('welcome');
-});
+Route::get('/', [HomeController::class, 'homeIndex']);
+Route::post('/contactSend', [HomeController::class, 'contactSend']);
+
+Route::get('/course', [CourseController::class, 'courseIndex']);
+Route::get('/project', [ProjectController::class, 'projectIndex']);
+Route::get('/terms', [TramsController::class, 'termsIndex']);
+Route::get('/policy', [PolicyController::class, 'policyIndex']);
+Route::get('/contact', [ContactController::class, 'contactIndex']);
+
